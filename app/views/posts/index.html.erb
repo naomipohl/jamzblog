@@ -1,0 +1,126 @@
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Bread &amp; Jamz Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+
+    <link href="clean-blog/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="clean-blog/css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="clean-blog/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Old+Standard+TT:400,400i,700" rel="stylesheet">
+
+    </head>
+
+<body>
+
+    <!-- Page Header -->
+    <header class="intro-header">
+        <div class="container">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1 id="apple">Bread &amp; Jamz Blog</h1>
+                        <hr class="small">
+                        <span class="subheading">ponderings on bread &amp; life</span>
+                    </div>
+                </div>
+            </div>
+    </header>
+
+    <!-- Main Content -->
+
+  <% @posts.each do |post| %>
+    
+    <div class="container">
+    <div class="row">
+    <hr>
+    <div class="post-preview">
+      <h2 class="post-title">
+      <%= link_to post.title, post_path(post) %>
+      </h2>
+        <h6> Posted on <%= post.created_at.strftime('%b %d, %Y') %></h6>
+      <h3 class="post-subtitle">
+        <%= raw(post.body).truncate(300) %>
+      </h3>
+      </div>
+      </div>
+      </div>
+      <% if admin_signed_in? %>
+        <%= link_to "Show", post_path(post), class: "btn btn-primary" %>
+        <%= link_to "Edit", edit_post_path(post), class: "btn btn-default" %>
+        <%= link_to "Delete", post_path(post), class: "btn btn-danger", data: {:confirm => "Are you sure?"}, method: :delete %>
+      <% end %>
+      </hr>
+    </div>
+    <% end %>
+  </div>
+  </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">&copy; Bread &amp; Jamz 2017</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
